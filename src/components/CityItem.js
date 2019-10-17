@@ -3,10 +3,14 @@ import image from "../images/mountains.svg";
 
 const City = props => {
   return (
-    <div>
-      <img className="image" alt="mountain" src={image} />
-      <p className="city-name">{props.name}</p>
-      <p className="metadata">{props.metadata}</p>
+    <div className="city-details-container">
+      <div>
+        <img className="image" alt="mountain" src={image} />
+      </div>
+      <div>
+        <p className="city-name">{props.name}</p>
+        <p className="metadata">{props.metadata}</p>
+      </div>
     </div>
   );
 };

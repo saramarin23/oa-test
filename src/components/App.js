@@ -10,11 +10,13 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      query: "",
       cities: []
       // items: 20,
       // loadingState: false
     };
     this.getCities = this.getCities.bind(this);
+    this.getQuery = this.getQuery.bind(this);
   }
 
   componentDidMount() {
@@ -29,14 +31,21 @@ class App extends React.Component {
       });
   }
 
+  getQuery(event) {
+    const queryValue = event.currentTarget.value;
+    this.setState({
+      query: queryValue
+    });
+  }
+
   render() {
-    const { cities } = this.state;
+    const { cities, query } = this.state;
     return (
       <div className="App">
         <main>
           <Header />
           <main className="App-container">
-            <Cities cities={cities} />
+            <Cities cities={cities} query={query} getQuery={this.getQuery} />
             <SelectedCities />
           </main>
         </main>

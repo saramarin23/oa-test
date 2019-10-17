@@ -1,7 +1,25 @@
 import React from "react";
+import Filter from "./Filter";
+import City from "./CityItem";
 
-const Cities = () => {
-  return <h2>Cities</h2>;
+const Cities = props => {
+  const { cities } = props;
+  return (
+    <div className="left-panel">
+      <Filter />
+      <h2>Cities</h2>
+      <ul className="cities">
+        {cities.map(city => {
+          return (
+            <li className="city" key={city.id}>
+              <input type="checkbox" />
+              <City name={city.name} id={city.id} metadata={city.chineseName} />
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
 };
 
 export default Cities;

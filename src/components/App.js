@@ -11,12 +11,15 @@ class App extends React.Component {
     super();
     this.state = {
       query: "",
-      cities: []
-      // items: 20,
-      // loadingState: false
+      favs: [],
+      selectAllCities: true,
+      cities: [],
+      items: 20,
+      loadingState: false
     };
     this.getCities = this.getCities.bind(this);
     this.getQuery = this.getQuery.bind(this);
+    this.selectCity = this.selectCity.bind(this);
   }
 
   componentDidMount() {
@@ -38,15 +41,52 @@ class App extends React.Component {
     });
   }
 
+  selectCity(e) {
+    const selectedCity = e.currentTarget.value;
+    if (selectedCity === "all") {
+      this.setState({ favs: ["all"] });
+    } else {
+      if (this.state.favs.indexOf(selectedCity) > -1) {
+        const index = this.state.favs.indexOf(selectedCity);
+        const newFavorite = [...this.state.favs];
+        newFavorite.splice(index, 1);
+        this.setState({ favs: newFavorite });
+      } else {
+        this.setState(prevState => ({
+          favs: [...prevState.favs, selectedCity]
+        }));
+      }
+    }
+  }
+
+  loadMoreCities() {
+    this.setState({ loadingState: true });
+  }
+
   render() {
-    const { cities, query } = this.state;
+    const {
+      cities,
+      query,
+      items,
+      loadingState,
+      favs,
+      selectAllCities
+    } = this.state;
     return (
       <div className="App">
         <main>
           <Header />
           <main className="App-container">
-            <Cities cities={cities} query={query} getQuery={this.getQuery} />
-            <SelectedCities />
+            <Cities
+              cities={cities}
+              selectAllCities={selectAllCities}
+              selectCity={this.selectCity}
+              items={items}
+              loadingState={loadingState}
+              query={query}
+              getQuery={this.getQuery}
+            />
+            <SelectedCities cities={cities} favs={favs} />
           </main>
         </main>
       </div>

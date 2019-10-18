@@ -10,7 +10,7 @@
 }
 
 .filter-container {
-  text-decoration: underline;
+  border-bottom: 1px solid silver;
 }
 
 .search-image {
@@ -18,8 +18,23 @@
   margin-right: 10px;
 }
 
+.query-input {
+  border: none;
+  width: 80%;
+  height: 30px;
+}
+
+input {
+  margin-right: 5px;
+}
+
 .left-panel {
   width: 50%;
+}
+
+.total-items {
+  display: flex;
+  margin: 20px;
 }
 
 .cities {
@@ -36,4 +51,8 @@
 
 .image {
   width: 50px;
+}
+
+.selected-list {
+  list-style: none;
 }

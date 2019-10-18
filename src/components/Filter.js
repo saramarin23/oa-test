@@ -7,6 +7,7 @@ const Filter = props => {
     <div className="filter-container">
       <img className="search-image" alt="search-icon" src={SearchIcon} />
       <input
+        className="query-input"
         placeholder="Search by name"
         type="search"
         name="filter"

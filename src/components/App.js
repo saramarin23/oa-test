@@ -20,6 +20,7 @@ class App extends React.Component {
     this.getCities = this.getCities.bind(this);
     this.getQuery = this.getQuery.bind(this);
     this.selectCity = this.selectCity.bind(this);
+    this.resetFavs = this.resetFavs.bind(this);
   }
 
   componentDidMount() {
@@ -59,6 +60,11 @@ class App extends React.Component {
     }
   }
 
+  resetFavs() {
+    this.forceUpdate();
+    this.setState({ favs: [], selectAllCities: false });
+  }
+
   loadMoreCities() {
     this.setState({ loadingState: true });
   }
@@ -86,7 +92,11 @@ class App extends React.Component {
               query={query}
               getQuery={this.getQuery}
             />
-            <SelectedCities cities={cities} favs={favs} />
+            <SelectedCities
+              action={this.resetFavs}
+              cities={cities}
+              favs={favs}
+            />
           </main>
         </main>
       </div>

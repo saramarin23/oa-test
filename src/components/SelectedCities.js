@@ -2,12 +2,12 @@ import React from "react";
 import SelectedItem from "./SelectedItem";
 
 const SelectedCities = props => {
-  let { favs } = props;
+  let { action, favs } = props;
   return (
     <div>
       <div>
         <p>{favs.length} items</p>
-        <button>CLEAR</button>
+        <button onClick={action}>CLEAR</button>
         <ul className="selected-list">
           {favs.map(city => {
             return (

@@ -4,10 +4,14 @@ import SelectedItem from "./SelectedItem";
 const SelectedCities = props => {
   let { action, favs } = props;
   return (
-    <div>
+    <div className="right-panel">
       <div>
-        <p>{favs.length} items</p>
-        <button onClick={action}>CLEAR</button>
+        <div className="right-header">
+          <p>{favs.length} items</p>
+          <button className="clear-button" onClick={action}>
+            CLEAR
+          </button>
+        </div>
         <ul className="selected-list">
           {favs.map(city => {
             return (

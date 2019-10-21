@@ -3,15 +3,7 @@ import Filter from "./Filter";
 import City from "./CityItem";
 
 const Cities = props => {
-  const {
-    cities,
-    query,
-    getQuery,
-    selectAllCities,
-    selectCity,
-    items,
-    loadingState
-  } = props;
+  const { cities, query, getQuery, selectCity, handleChange } = props;
   const filteredCities = cities.filter(filteredCity =>
     filteredCity.name.toLowerCase().includes(query.toLowerCase())
   );
@@ -21,8 +13,9 @@ const Cities = props => {
       <div className="total-items">
         <input
           className="select-all_input"
+          value="checkAll"
           type="checkbox"
-          onClick={selectAllCities}
+          onClick={handleChange}
         />
         <p>{filteredCities.length} items</p>
       </div>
@@ -33,12 +26,10 @@ const Cities = props => {
               className="city-container"
               key={city.id}
               value={city.id}
-              // onClick={selectCity}
+              metadata={city.metadata}
             >
-              {/* <label htmlFor={city.name}> */}
               <input type="checkbox" value={city.id} onChange={selectCity} />
               <City name={city.name} id={city.id} metadata={city.chineseName} />
-              {/* </label> */}
             </li>
           );
         })}

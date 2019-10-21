@@ -1,16 +1,15 @@
 * {
   margin: 0;
 }
-.App {
-}
 
 .App-container {
   display: flex;
 }
 
 h1 {
-  margin: 5px;
+  padding: 5px;
   font-size: 16px;
+  border: 1px solid #c0c0c0;
 }
 
 .filter-container {
@@ -34,6 +33,8 @@ input {
 
 .left-panel {
   width: 50%;
+  padding: 0 20px;
+  border-right: 1px solid #c0c0c0;
 }
 
 .total-items {
@@ -48,19 +49,19 @@ input {
 .city-container {
   display: flex;
   align-items: center;
-}
 
-.city-container:hover {
-  cursor: pointer;
-  background-color: #f2f2f2;
+  &:hover {
+    cursor: pointer;
+    background-color: #f2f2f2;
+  }
 }
 
 .city-details-container {
   display: flex;
-}
 
-.city-details-container:hover {
-  background-color: #f2f2f2;
+  &:hover {
+    background-color: #f2f2f2;
+  }
 }
 
 .image {
@@ -71,4 +72,24 @@ input {
 .selected-list {
   list-style: none;
   padding: 0;
+}
+
+.right-panel {
+  padding-left: 20px;
+  width: 50%;
+}
+
+.right-header {
+  display: flex;
+  justify-content: space-around;
+  margin: 15px 0;
+  border-bottom: 1px solid #c0c0c0;
+  align-items: center;
+}
+
+.clear-button {
+  color: rgb(0, 81, 255);
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
 }
